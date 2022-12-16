@@ -7,9 +7,10 @@
         <a class="blog-header-logo text-dark" href="{{ route('frontend.index') }}">Logo</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
-        @if(Auth::check())
+        @if(!Auth::check())
         <a class="btn btn-sm btn-outline-secondary" href="{{ route('login') }}">Login</a>
         @else
+        <a class="btn btn-sm btn-outline-secondary mx-1" href="{{ route('admin.home') }}">{{ trans('global.dashboard') }}</a>
         <a class="btn btn-sm btn-outline-secondary" href="#" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">{{ trans('global.logout') }}</a>
         <form id="logoutform" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
